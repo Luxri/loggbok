@@ -26,11 +26,7 @@ public class LogEntry {
 
     @Override
     public String toString() {
-        return "LogEntry{" +
-                "createdAt=" + createdAt +
-                ", updatedAt=" + updatedAt +
-                ", message='" + message + '\'' +
-                '}';
+        return "\n LogEntry{" + "\n Inlägg skapades = " + createdAt + ", \n Inlägget uppdaterades = " + updatedAt + ", \n Medelande = '" + message + '\'' + '}';
     }
     // Optional: add old version to history
     public void update(String newMessage) {

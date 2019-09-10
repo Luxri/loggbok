@@ -19,7 +19,7 @@ public class logg {
                 + "4. Läs in." + "\n"
                 + "5. Avsluta.");
     }
-    static ArrayList<String> userInput = new ArrayList<String>();
+    static ArrayList<LogEntry> userInput = new ArrayList<LogEntry>();
     private static void selectOption(Scanner op) {
         int input = op.nextInt();
 
@@ -27,24 +27,24 @@ public class logg {
         if (input == 1) {
             saveFile(op, userInput);
         } else if (input == 2) {
-            System.out.println("Du kan inte uppdatera");
+            System.out.println("Du kan inte uppdatera för tillfället.");
         } else if (input == 3) {
-            System.out.println("Du kan inte spara för tillfället");
+            System.out.println("Du kan inte spara filer för tillfället.");
         } else if (input == 4) {
             System.out.println(userInput);
         } else if (input == 5) {
-            System.out.println("Hejdå");
+            System.out.println("Hejdå.");
             System.exit(0);
         }
     }
 
-    private static void saveFile(Scanner op, ArrayList<String> userInput) {
-        System.out.println("Du kan inte skapa posts just nu.");
+    private static void saveFile(Scanner op, ArrayList<LogEntry> userInput) {
+        System.out.println("Skriv ditt medelande.");
         String newFile = op.nextLine();
-        userInput.add(newFile);
         System.out.println("Vill du spara? 1 = ja 2 = nej");
         int saveInput = op.nextInt();
         if (saveInput == 1) {
+            userInput.add(new LogEntry(newFile));
             System.out.println("Post har sparats");
         } else if (saveInput == 2){
             System.out.println("Ej sparad");
