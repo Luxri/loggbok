@@ -48,7 +48,7 @@ public class logg {
             System.out.println("Post har sparats");
         } else if (saveInput == 2){
             System.out.println("Ej sparad");
-            
+
         }
     }
 }
