@@ -30,6 +30,7 @@ public class LogEntry {
     }
     // Optional: add old version to history
     public void update(String newMessage) {
-
+        this.message = newMessage;
+        updatedAt = new Date();
     }
 }

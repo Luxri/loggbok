@@ -19,6 +19,7 @@ public class logg {
                 + "4. Läs in." + "\n"
                 + "5. Avsluta.");
     }
+
     static ArrayList<LogEntry> userInput = new ArrayList<LogEntry>();
     private static void selectOption(Scanner op) {
         int input = op.nextInt();
@@ -27,7 +28,16 @@ public class logg {
         if (input == 1) {
             saveFile(op, userInput);
         } else if (input == 2) {
-            System.out.println("Du kan inte uppdatera för tillfället.");
+            System.out.println("Uppdatera dina filer.");
+            System.out.println(userInput);
+            System.out.println("Välj en fil genom att skriva in deras index, med start från 0.");
+            index(userInput);
+            int elementAt = op.nextInt();
+            op.nextLine();
+            String newMessage = op.nextLine();
+            userInput.get(elementAt).update(newMessage);
+
+
         } else if (input == 3) {
             System.out.println("Du kan inte spara filer för tillfället.");
         } else if (input == 4) {
@@ -36,6 +46,9 @@ public class logg {
             System.out.println("Hejdå.");
             System.exit(0);
         }
+    }
+
+    private static void index(ArrayList<LogEntry> userInput) {
     }
 
     private static void saveFile(Scanner op, ArrayList<LogEntry> userInput) {
