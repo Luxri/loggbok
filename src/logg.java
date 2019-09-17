@@ -14,12 +14,13 @@ public class logg {
         System.out.println("Välkommen! Välj någon av alternativen nedan.");
         System.out.println(
                   "1. lägg till post." + "\n"
-                + "2. Uppdatera post." + "\n"
+                + "2. Uppdatera." + "\n"
                 + "3. Spara till en fil." + "\n"
                 + "4. Läs in." + "\n"
                 + "5. Avsluta.");
     }
-    static ArrayList<String> userInput = new ArrayList<String>();
+
+    static ArrayList<LogEntry> userInput = new ArrayList<LogEntry>();
     private static void selectOption(Scanner op) {
         int input = op.nextInt();
 
@@ -27,7 +28,16 @@ public class logg {
         if (input == 1) {
             saveFile(op, userInput);
         } else if (input == 2) {
-            System.out.println("Du kan inte uppdatera.");
+            System.out.println("Uppdatera dina filer.");
+            System.out.println(userInput);
+            System.out.println("Välj en fil genom att skriva in deras index, med start från 0.");
+            index(userInput);
+            int elementAt = op.nextInt();
+            op.nextLine();
+            String newMessage = op.nextLine();
+            userInput.get(elementAt).update(newMessage);
+
+
         } else if (input == 3) {
             System.out.println("Du kan inte spara filer för tillfället.");
         } else if (input == 4) {
@@ -38,22 +48,20 @@ public class logg {
         }
     }
 
-    private static void saveFile(Scanner op, ArrayList<String> userInput) {
+    private static void index(ArrayList<LogEntry> userInput) {
+    }
+
+    private static void saveFile(Scanner op, ArrayList<LogEntry> userInput) {
         System.out.println("Skriv ditt medelande.");
         String newFile = op.nextLine();
         System.out.println("Vill du spara? 1 = ja 2 = nej");
         int saveInput = op.nextInt();
         if (saveInput == 1) {
-            userInput.add(newFile);
+            userInput.add(new LogEntry(newFile));
             System.out.println("Post har sparats");
         } else if (saveInput == 2){
-
             System.out.println("Ej sparad");
-/*
-saveFile börjar med att efter man tryckt på 1. Programmet frågar dig vad du vill skriva för medelande och efter att du har skrivit
-ditt medelande så frågar programmet om du vill spara vad du har skrivit. Om du trycker 1 så kommer programmet sparas men om du trycker 2 kommer
-det inte sparas.
- */
+
         }
     }
 }
